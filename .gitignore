@@ -1,0 +1,4 @@
+*.root
+build/
+clang-build/
+.cache
