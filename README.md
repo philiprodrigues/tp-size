@@ -78,3 +78,5 @@ We can gain a little bit by sorting the TPs by `time_start` and storing the _dif
 Done naively, this means we have to read all the entries up to the current entry in order to find its absolute `time_start`. A more realistic approach would store groups of TPs, with the absolute timestamp of the first TP in the group stored. Then we only have to read the entries in the desired TP's group to find the absolute timestamp. With moderate-sized groups, the compression ratio would be little changed.
 
 ROOT's file format has a "compression level" which can be increased. Doing so can reduce the per-TP size to 7.5 bytes, but at the cost of an order-of-magnitude increase in time to compress the data.
+
+This study is done with ROOT files, but we're using HDF5 files in dunedaq. HDF5 has its own compression functionality, so I would imagine that similar compression ratios can be achieved. For an example of compressing raw WIB data with HDF5, see https://github.com/philiprodrigues/wib_hdf5_compress/ . The techniques used there should carry over to TPs, if HDF5 "compound datasets" are used to store the TPs.
